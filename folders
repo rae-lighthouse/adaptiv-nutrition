@@ -1,0 +1,15 @@
+adaptiv-nutrition/
+│
+├── index.html
+├── styles.css
+├── script.js
+│
+├── assets/
+│   ├── images/
+│   │   ├── hero-product.png
+│   │   ├── benefit-callout.png
+│   │   ├── texture-detail.png
+│   │   └── logo.svg
+│   └── icons/
+│
+└── README.md
