@@ -1,47 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Adaptiv Nutrition | Protein Broth Powder</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
 
-<body>
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+}
 
-  <!-- Hero -->
-  <section class="hero">
-    <img src="assets/images/hero-product.png" alt="Adaptiv Nutrition Protein Broth Powder" />
-    <h1>Protein, Reimagined as Real Food</h1>
-    <p>Savory protein broth for strength, recovery, and gut health.</p>
-    <button>Join the Waitlist</button>
-  </section>
+.hero img {
+  max-width: 300px;
+}
 
-  <!-- Benefits -->
-  <section class="benefits">
-    <ul>
-      <li>20–25g protein per serving</li>
-      <li>Collagen + plant protein blend</li>
-      <li>Zero sugar, low GI carbohydrates</li>
-      <li>Easy on digestion</li>
-    </ul>
-  </section>
+.benefits ul {
+  list-style-type: none;
+  padding: 0;
+}
 
-  <!-- Product Detail -->
-  <section class="details">
-    <img src="assets/images/texture-detail.png" alt="Powder texture detail" />
-    <p>Miso Mushroom. Warm. Umami. Functional.</p>
-  </section>
+.cta form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
 
-  <!-- CTA -->
-  <section class="cta">
-    <h2>Be First to Try Adaptiv</h2>
-    <form>
-      <input type="email" placeholder="Your email" required />
-      <button type="submit">Notify Me</button>
-    </form>
-  </section>
-
-  <script src="script.js"></script>
-</body>
-</html>
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
