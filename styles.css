@@ -319,3 +319,41 @@ section > *:last-child {
   }
 }
 
+/* =====================
+   FAQ
+===================== */
+
+.faq {
+  padding: var(--space-lg) var(--space-sm);
+}
+
+.faq h2 {
+  margin-bottom: var(--space-lg);
+}
+
+.faq-item {
+  max-width: 60ch;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.faq-item h3 {
+  font-family: var(--ff-head);
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.faq-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.faq-divider {
+  width: 100%;
+  max-width: 60ch;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin: var(--space-md) auto;
+}
