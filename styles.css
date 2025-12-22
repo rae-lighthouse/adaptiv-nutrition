@@ -1,45 +1,39 @@
-/* Reset */
+/* =====================
+   RESET + VARIABLES
+===================== */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Variables */
 :root {
   --ff-body: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   --ff-head: 'Merriweather', Georgia, serif;
-/* Heading size/weight variables */
-  --h3-size: 1.125rem;
-  --h3-weight: 500;
 
   --bg: #36454F;
   --text: #dbdbdc;
   --card: #4A4A55;
   --accent: #FFFFFF;
-  --max-width: 700px;
+
+  --content-width: 680px;
+
+  /* spacing scale */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 72px;
 }
 
-/* set H3 size */
-h3 { font-size: var(--h3-size); font-weight: var(--h3-weight); }
+/* =====================
+   BASE LAYOUT
+===================== */
 
-/* make problem list match H3 (font, size, weight, line-height) */
-.problem-list,
-.problem-list li {
-  font-family: var(--ff-body);
-  font-size: var(--h3-size);
-  font-weight: var(--h3-weight);
-  line-height: 1.2;
-}
-
-/* Base */
-html, body {
+html,
+body {
   height: 100%;
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 body {
@@ -48,78 +42,175 @@ body {
   background-color: var(--bg);
   line-height: 1.6;
   text-align: center;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Headings */
-h1, h2, h3 {
+/* =====================
+   TYPOGRAPHY
+===================== */
+
+h1,
+h2,
+h3 {
   font-family: var(--ff-head);
   font-weight: 700;
   line-height: 1.2;
-  color: var(--text);
-  margin-bottom: 20px;
+  margin-bottom: var(--space-md);
 }
 
-/* Layout */
+h1 {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+}
+
+h3 {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+p {
+  max-width: 80ch;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--space-sm);
+}
+
+h2.narrow-lede {
+  max-width: 75ch;
+  margin: 0 auto var(--space-sm);
+  opacity: 0.9;
+}
+
+.hero-subline {
+  font-family: var(--ff-head);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+
+  max-width: 52ch;        /* overrides p { max-width: 80ch } */
+  margin: 0 auto var(--space-md);
+
+  opacity: 0.9;
+}
+
+
+/* =====================
+   SECTIONS
+===================== */
+
 section {
-  padding: 20px 20px;
+  padding: var(--space-sm) var(--space-sm);
 }
 
-/* Reduce stacked-section gap */
-section + section {
-  padding-top: 10px;
+section > *:last-child {
+  margin-bottom: 0;
 }
 
-/* Problem section */
-.problem {
-  background-color: var(--bg);
+/* =====================
+   CONTENT WRAPPER
+===================== */
+
+.content {
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Centered list block with visible disc bullets, left-aligned content */
+/* =====================
+   HERO
+===================== */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0;
+}
+
+.hero img {
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  height: 520px;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: var(--space-lg);
+}
+
+/* =====================
+   PROBLEM LIST
+===================== */
+
 .problem-list {
-  list-style-type: none;
-  margin: 0.5rem auto;
-  padding-left: 1.25rem;
-  max-width: var(--max-width);
-  text-align: center;
-  margin-bottom: 24px;
+  list-style: none;
+  max-width: 520px;
+  margin: var(--space-sm) auto;
+  text-align: left;
 }
 
 .problem-list li {
-  color: var(--text);
-  font-size: 1rem;
+  margin-bottom: var(--space-xs);
+}
+
+.problem {
+  padding: 2rem 1.5rem 2rem; /* top 4rem, bottom 2rem */
+}
+
+.problem-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.problem h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.problem-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 3rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.problem-list li {
+  font-size: 1.05rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+}
+
+.problem-divider {
+  width: 60px;
+  height: 1px;
+  background: rgba(255,255,255,0.3);
+  margin: 0.75rem auto; /* reduced from 2.5rem */
+}
+
+.problem-reframe {
+  font-size: 1.25rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
-.problem-list li::marker {
-  color: var(--text);
-  font-size: 1.05rem;
+.problem-subtext {
+  font-size: 1rem;
+  opacity: 0.85;
 }
 
-/* Benefits */
-.benefits {
-  background-color: var(--bg);
-}
-
-.benefits ul {
-  list-style: none;
-  padding: 0;
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.benefits li {
-  background-color: var(--card);
-  margin: 12px 0;
-  padding: 12px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  color: var(--text);
-  font-size: 1.125rem;
-}
+/* =====================
+   BENEFITS FIGURE
+===================== */
 
 .benefits-figure {
-  max-width: var(--max-width);
-  margin: 0 auto 8px;   /* smaller gap below image to bring caption close */
+  max-width: var(--content-width);
+  margin: 0 auto var(--space-sm);
   text-align: center;
 }
 
@@ -129,228 +220,102 @@ section + section {
   display: block;
 }
 
-.img-subtitle {
-  font-family: var(--ff-head); /* use heading font if desired */
-  font-size: 1rem;            /* match H3 or adjust */
-  font-weight: 700;           /* bold */
-  font-style: italic;         /* italic */
-  color: var(--text);
-  margin-top: 2px;            /* small gap from image */
-  line-height: 1.2;
+.benefits-figure figcaption {
+  font-family: var(--ff-head);
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: italic;
+  margin-top: var(--space-xs);
+  margin-bottom: 0rem; /* reduced from var(--space-sm) */
 }
 
-/* Details */
-.details {
-  background-color: var(--bg);
-  overflow: visible; /* ensure images aren't clipped */
-}
+
+/* =====================
+   DETAILS
+===================== */
 
 .details p {
-  margin-bottom: 12px;
   font-size: 1.125rem;
-  color: var(--text);
-  max-width: var(--max-width);
-  margin-left: auto;
-  margin-right: auto;
 }
 
-/* CTA */
-.cta {
-  background-color: var(--bg);
-  padding: 20px 20px; /* reduced from 60 */
-}
+/* =====================
+   BUTTONS
+===================== */
 
-.cta h2 {
-  font-size: 2rem;
-  margin-bottom: 24px;
-}
-
-/* Form layout */
-.cta form {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.cta input[type="email"] {
-  padding: 14px 16px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #555;
-  flex: 1 1 250px;
-  max-width: 350px;
-  background-color: var(--card);
-  color: var(--text);
-}
-
-/* Input: match Notify Me button (white bg, charcoal text) */
-.cta input[type="email"] {
-  background-color: var(--accent);   /* white */
-  color: var(--bg);                  /* charcoal text */
-  border: 2px solid var(--accent);   /* match button border */
-  padding: 14px 16px;
-  font-size: 1rem;
-  border-radius: 8px;
-  flex: 1 1 250px;
-  max-width: 350px;
-  box-shadow: 0 2px 0 rgba(0,0,0,0.05);  /* subtle 3D lift */
-  transition: box-shadow 150ms ease, background-color 150ms ease, color 150ms ease;
-  caret-color: var(--bg);
-}
-
-/* Placeholder slightly muted but visible on white */
-.cta input[type="email"]::placeholder {
-  color: rgba(54, 69, 79, 0.45); /* semi-muted charcoal */
-}
-
-/* Focus: keep visible but subtle */
-.cta input[type="email"]:focus {
-  outline: none;
-  box-shadow: 0 6px 0 rgba(0,0,0,0.08);
-}
-
-/* Optional: keep same hover subtle behavior as button */
-.cta input[type="email"]:hover {
-  box-shadow: 0 4px 0 rgba(0,0,0,0.06);
-}
-
-/* Buttons: bold label, layered 3D shadow, hover/active/focus states */
-.cta button[type="submit"],
-.hero button,
-button.primary-button {
+.primary-button,
+.hero button {
   background-color: #FAF0E6;
   color: var(--bg);
   border: 2px solid var(--accent);
   padding: 14px 36px;
   font-size: 1rem;
   border-radius: 8px;
-  cursor: pointer;
   font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: var(--space-md);
+
   box-shadow:
     0 6px 0 rgba(0,0,0,0.12),
     0 10px 20px rgba(0,0,0,0.08);
+
   transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
 }
 
-/* Hover */
-.cta button[type="submit"]:hover,
-.hero button:hover,
-button.primary-button:hover {
+.primary-button:hover,
+.hero button:hover {
   transform: translateY(-3px);
   box-shadow:
     0 12px 0 rgba(0,0,0,0.12),
     0 18px 36px rgba(0,0,0,0.10);
-  background-color: #F0F2F5;
 }
 
-/* Active */
-.cta button[type="submit"]:active,
-.hero button:active,
-button.primary-button:active {
+.primary-button:active,
+.hero button:active {
   transform: translateY(0);
   box-shadow:
     0 3px 0 rgba(0,0,0,0.14),
     0 6px 12px rgba(0,0,0,0.06);
 }
 
-/* Focus */
-.cta button[type="submit"]:focus-visible,
-.hero button:focus-visible,
-button.primary-button:focus-visible {
-  outline: 3px solid rgba(255,255,255,0.12);
-  outline-offset: 2px;
-}
-
-/* Center the moved button so it visually matches the original hero button placement */
-button.primary-button {
-  display: inline-block;
-  margin: 16px auto 0;
-}
-
-/* Hero */
-.hero {
-  width: 100%;
-  background-color: var(--bg);
-  padding: 0px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* HERO: full-bleed and shorter visual height */
-.hero img {
-  width: 100vw;
-  max-width: none;
-  margin-left: calc(50% - 50vw);
-  height: 520px;              /* shorter than benefits */
-  object-fit: cover;          /* fills the banner area */
-  object-position: center;
-  display: block;
-  margin-bottom: 48px;        /* breathing room before hero copy */
-}
-
-/* Benefits image: show full graphic, do NOT crop */
-.benefits-figure,
-.benefits, 
-.details {
-  /* allow the figure/container to expand to image size when needed */
-  max-width: 100%;
-}
-
-.benefits-figure img,
-.benefits > img,
-.details > img {
-  width: 100%;         /* scale to available width */
-  max-width: none;     /* do not constrain to a small content width */
-  height: auto;        /* preserve full image height (no cropping) */
-  object-fit: contain; /* never crop; preserve the whole graphic */
-  display: block;
-  margin: 0 auto 24px; /* breathing room before the copy */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  border-radius: 0;
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  section { padding: 40px 16px; }
-
-  .hero h1 { font-size: 2rem; }
-  .cta h2 { font-size: 1.5rem; }
-
-  .hero img { height: 240px; margin-bottom: 28px; } /* smaller on mobile */
-  .benefits img,
-  .details img { max-height: none; margin-bottom: 24px; }
-
-  .problem-list,
-  .benefits ul,
-  .details p {
-    max-width: 100%;
-    padding-left: 1rem;
-  }
-}
-
-/* Basic modal */
-.modal { display:none; position:fixed; inset:0; z-index:2000; align-items:center; justify-content:center; }
-.modal[aria-hidden="false"] { display:flex; }
-.modal__overlay { position:absolute; inset:0; background:rgba(0,0,0,0.5); }
-.modal__content { position:relative; z-index:2; width:calc(100% - 40px); max-width:720px; background:#fff; color:#111; padding:24px; border-radius:8px; box-shadow:0 10px 40px rgba(0,0,0,0.25); }
-.modal__close { position:absolute; top:12px; right:12px; background:transparent; border:0; font-size:18px; cursor:pointer; }
-.modal__content input, .modal__content button { width:100%; margin-top:12px; }
-
-/* keep same button look (reuse primary style) */
-.modal__content button { max-width:320px; margin:auto; display:block; }
-
-body.modal-open { overflow: hidden; }
-
-/* small accessible helper */
-.sr-only{ position:absolute !important; clip:rect(1px,1px,1px,1px); padding:0; border:0; height:1px; width:1px; overflow:hidden; }
+/* =====================
+   AIRTABLE EMBED
+===================== */
 
 .airtable-embed {
   width: 100%;
-  height: min(80vh, 400px); /* responsive, never taller than viewport */
+  height: min(80vh, 1000px);
   border: 0;
   background: transparent;
   display: block;
 }
+
+/* =====================
+   FOOTER
+===================== */
+
+.site-footer {
+  margin-top: auto;
+  padding: var(--space-md);
+  text-align: center;
+  font-size: 0.875rem;
+  opacity: 0.85;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+
+@media (max-width: 768px) {
+  section {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  .hero img {
+    height: 240px;
+    margin-bottom: var(--space-md);
+  }
+}
+
